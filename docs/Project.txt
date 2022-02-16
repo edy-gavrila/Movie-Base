@@ -1,0 +1,8 @@
+Objective:
+    This project is a next.js application using a online movie database to allow the user to create and maintain its own movie library.
+
+Tech Stack:
+    Next.JS
+    Tailwind
+    HTML, CSS
+    Firebase for Authenticating
