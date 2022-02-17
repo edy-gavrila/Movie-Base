@@ -1,0 +1,3 @@
+16/02/22
+    Created folder structure, installed dependencies.
+    Started Work on the navbar
