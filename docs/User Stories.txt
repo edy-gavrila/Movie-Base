@@ -1,3 +1,5 @@
 User Stories:
 1. The user should see a landing page when the page first loads.
 2. When the page first loads, the user can use the app as guest or he can authenticate.
+3. The user can login, register or use the site in guest mode.
+4. When in guest mode all data is saved in localStorage

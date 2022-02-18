@@ -4,11 +4,13 @@ import SiteNavLinks from "../UI/SiteNavLinks";
 
 function Header() {
   return (
-    <header className="w-screen md:px-4 bg-slate-800 py-3 sm:flex sm:items-center text-white font-semibold min-w-[360px]">
-      <SiteLogo />
-      <nav className="ml-7 flex grow justify-between">
-        <SiteNavLinks />
-        <AuthLinks />
+    <header className="w-full bg-slate-800 ">
+      <nav className="container md:px-4 py-3 sm:flex sm:gap-5 sm:items-center text-white  min-w-[360px]">
+        <SiteLogo />
+        <div className="flex flex-1">
+          <SiteNavLinks />
+          <AuthLinks />
+        </div>
       </nav>
     </header>
   );
