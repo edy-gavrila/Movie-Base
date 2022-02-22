@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const emptyUserData = { password: "", email: "" };
 
-const LoginForm = ({ onLogin }) => {
+const LoginForm = ({ onLoginUser }) => {
   const [userData, setUserData] = useState(emptyUserData);
 
   const emailChangedHandler = (event) =>
@@ -15,7 +15,7 @@ const LoginForm = ({ onLogin }) => {
 
   const formSubmitHandler = (e) => {
     e.preventDefault();
-    onLogin(userData);
+    onLoginUser(userData);
   };
 
   return (

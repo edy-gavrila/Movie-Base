@@ -12,7 +12,7 @@ const defaultUserData = {
 const formInputClasses =
   "border-2 rounded border-cyan-500 focus:border-2 focus:border-cyan-700  outline-none invalid:focus:bg-red-200  w-full p-0.5 mb-3 ";
 
-function RegistrationForm({ onRegister }) {
+function RegistrationForm({ onRegisterUser }) {
   const [userData, setUserData] = useState(defaultUserData);
 
   const usernameChangedHandler = (event) =>
@@ -29,11 +29,11 @@ function RegistrationForm({ onRegister }) {
 
   const formSubmitHandler = (e) => {
     e.preventDefault();
-    onRegister(userData);
+    onRegisterUser(userData);
   };
 
   return (
-    <form>
+    <form onSubmit={formSubmitHandler}>
       <div>
         <label className="block" htmlFor="username">
           Username:
@@ -44,7 +44,7 @@ function RegistrationForm({ onRegister }) {
           value={userData.username}
           onChange={usernameChangedHandler}
           placeholder="Please choose a username..."
-          type="email"
+          type="text"
           required
         />
       </div>
@@ -67,17 +67,22 @@ function RegistrationForm({ onRegister }) {
           Password:
         </label>
         <input
-          className={formInputClasses}
+          className={`${formInputClasses} mb-0`}
           id="password"
-          value={userData.email}
+          value={userData.password}
           onChange={passwordChangedHandler}
           placeholder="Please enter your password..."
           type="password"
+          pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,32}$"
           required
         />
+         <small className=" block mb-3 italic text-cyan-800">
+          Please make your password at least 8 characters long, include at least
+          one capital letter and at least one digit.
+        </small>
       </div>
 
-      <div className="mb-5">
+      <div className="mb-3">
         <label className="block" htmlFor="avatarURL">
           Avatar URL:
         </label>

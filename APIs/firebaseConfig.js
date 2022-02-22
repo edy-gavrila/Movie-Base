@@ -1,9 +1,9 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import firebaseKey from "./firebaseKey"; //you may need to create this file with you own firebase key.
 
 const firebaseConfig = {
-    //safe to be exposed for firebase - in general, api keys should not be exposed
-  apiKey: "AIzaSyDBf9ETUeMEwEWYTFbHzAhhTzuF_gLsa3Y",
+  apiKey: firebaseKey,
   authDomain: "movie-base-3023f.firebaseapp.com",
   projectId: "movie-base-3023f",
   storageBucket: "movie-base-3023f.appspot.com",

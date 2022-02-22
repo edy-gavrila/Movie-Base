@@ -31,7 +31,7 @@ function SiteNavLinks() {
     );
   });
 
-  return <ul className="flex gap-1 flex-1">{menuLinks}</ul>;
+  return <ul className="flex gap-1 flex-1 items-center">{menuLinks}</ul>;
 }
 
 export default SiteNavLinks;

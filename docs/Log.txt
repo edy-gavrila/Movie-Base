@@ -1,17 +1,19 @@
 16/02/22
     Created folder structure, installed dependencies.
     Started Work on the navbar
+
 17/02/22
     Created login form
     Started styling the login form
     Programmed the input control
     Worked on Form Validation
     Started Working on the Error Banner UI
+
 18/02/22
     Reworked the styling on menu bar and site layout components as well as the menu items.
+    Started working on login and registration logic. 
+    Hit an error with registration but the error banner I created earlier helped me greatly with tracking the error. Turned out the email and password were not passes to the registration function correctly.
 
-     pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,32}$"
-      <small className=" block mb-5 italic ">
-          Please make your password at least 8 characters long, include at least
-          one capital letter and at least one digit.
-        </small>
+20/02/22
+    
+     

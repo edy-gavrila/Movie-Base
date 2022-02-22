@@ -1,32 +1,92 @@
-import React from "react";
+import { useContext, useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import { AuthContext } from "../Contexts/AuthContext";
+
+import {
+  logoutUser,
+  registerUserWithFirebase,
+  updateFirebaseProfileUserNameAndPhotoURL,
+} from "../APIs/auth";
+
 import RegistrationForm from "../components/RegistrationForm/RegistrationForm";
 import SiteLayout from "../components/SiteLayout/SiteLayout";
+import RegisterUserInfo from "../components/UI/RegisterUserInfo";
+import ErrorBanner from "../components/UI/ErrorBanner";
+
+const defaultAuthError = { code: "", message: "", isError: false };
 
 function Register() {
+  const [authError, setAuthError] = useState(defaultAuthError);
+  const { onSetUserAuthData, onUserLogout } = useContext(AuthContext);
+  const router = useRouter();
+
+  useEffect(() => {
+    const setUserLoggedOut = async () => {
+      try {
+        await logoutUser();
+        onUserLogout();
+      } catch (error) {
+        setAuthError({
+          code: error.code,
+          message: error.message,
+          isError: true,
+        });
+      }
+    };
+    setUserLoggedOut();
+  }, [onUserLogout]);
+
+  const registerUserHandler = async ({
+    username,
+    email,
+    password,
+    photoURL,
+  }) => {
+    let registeredUserData;
+
+    clearAuthError();
+
+    try {
+      registeredUserData = await registerUserWithFirebase({
+        email,
+        password,
+      });
+
+      if (username || photoURL) {
+        registeredUserData = await updateFirebaseProfileUserNameAndPhotoURL({
+          username,
+          photoURL,
+        });
+      }
+
+      onSetUserAuthData(registeredUserData);
+      navigateToHomePage();
+    } catch (error) {
+      setAuthError({
+        code: error.code,
+        message: error.message,
+        isError: true,
+      });
+    }
+  };
+
+  const clearAuthError = () => {
+    setAuthError(defaultAuthError);
+  };
+
+  const navigateToHomePage = () => {
+    router.push("/");
+  };
   return (
     <SiteLayout>
-      <div className="h-full flex flex-col justify-center items-left relative">
-        <section>
-          <h3 className="text-2xl text-zinc-800 mb-2">
-            Register for an account
-          </h3>
-          <p>
-            Please register to take full advantage of the features on this site.
-          </p>
-          <p>Registered users can:</p>
-          <ul className="list-disc pl-8 text-sm">
-            <li>Rate movies and shows</li>
-            <li>Create custom lists and save movies and shows</li>
-            <li>Write your own reviews</li>
-          </ul>
-          <p className="mb-4">
-            Creating an account is free and easy. Just fill out the form below
-          </p>
-        </section>
-        <RegistrationForm />
+      <div className="py-4 sm:py-24 sm:px-4 xl:px-40 flex flex-col justify-center items-left relative ">
+        {authError.isError && (
+          <ErrorBanner code={authError.code} message={authError.message} />
+        )}
+        <RegisterUserInfo />
+        <RegistrationForm onRegisterUser={registerUserHandler} />
       </div>
     </SiteLayout>
   );
 }
-
 export default Register;

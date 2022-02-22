@@ -1,5 +1,4 @@
-import React from "react";
-import MenuLink from "./MenuLink";
+import MenuLink from "../UI/MenuLink";
 
 const authLinks = [
   {
