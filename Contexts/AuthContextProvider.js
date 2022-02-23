@@ -1,14 +1,9 @@
 import { useCallback, useState } from "react";
 
-import { AuthContext } from "./AuthContext";
+import { AuthContext, defaultUserContext } from "./AuthContext";
 
-const defaultUserState = {
-  userData: null,
-  isAuthenticated: false,
-  guestMode: false,
-};
 function AuthContextProvider({ children }) {
-  const [authState, setAuthState] = useState({ ...defaultUserState });
+  const [authState, setAuthState] = useState({ ...defaultUserContext });
 
   const setUserAuthDataHandler = ({ email, displayName, photoURL, uid }) => {
     setAuthState({
@@ -20,7 +15,7 @@ function AuthContextProvider({ children }) {
 
   const logoutUserHandler = useCallback(() => {
     setAuthState({
-      ...defaultUserState,
+      ...defaultUserContext,
     });
   }, []);
 

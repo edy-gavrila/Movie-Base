@@ -6,7 +6,7 @@ function SiteLogo() {
   return (
     <div className="flex items-center justify-center w-full  sm:w-auto mb-5 sm:mb-0">
       <Image src={logo} alt="site-logo" />
-      <h2 className="text-2xl ml-4">Movie Base</h2>
+      <h2 className="text-2xl ml-4 text-cyan-300 font-bold tracking-normal">Movie Base</h2>
     </div>
   );
 }

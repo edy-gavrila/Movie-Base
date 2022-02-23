@@ -1,7 +1,7 @@
 import React from "react";
 
-const defaultUserData = {
-  userData: null,
+const defaultUserContext = {
+  userData: { email: "", displayName: "", photoURL: "", uid: null },
   isAuthenticated: false,
   guestMode: false,
   onSetUserAuthData: () => {},
@@ -9,6 +9,6 @@ const defaultUserData = {
   onSetGuestMode: () => {},
 };
 
-const AuthContext = React.createContext({ ...defaultUserData });
+const AuthContext = React.createContext({ ...defaultUserContext });
 
-export { AuthContext, defaultUserData };
+export { AuthContext, defaultUserContext };

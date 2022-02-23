@@ -1,6 +1,6 @@
-import AuthSection from "../AuthSection/AuthSection";
-import SiteLogo from "../UI/SiteLogo";
-import SiteNavLinks from "../UI/SiteNavLinks";
+import AuthSection from "./AuthSection";
+import SiteLogo from "./UI/SiteLogo";
+import SiteNavLinks from "./UI/SiteNavLinks";
 
 function Header() {
   return (

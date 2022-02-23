@@ -15,5 +15,8 @@
     Hit an error with registration but the error banner I created earlier helped me greatly with tracking the error. Turned out the email and password were not passes to the registration function correctly.
 
 20/02/22
-    
+   Reworked some portions of the UI. Continued to work on the authentication system.
+
+22/02/22
+    Started working on the movie data provider.
      

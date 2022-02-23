@@ -1,5 +1,5 @@
 import React from "react";
-import CustomIcon from "../UI/CustomIcon";
+import CustomIcon from "./UI/CustomIcon";
 import { FaTwitter } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { BsGithub } from "react-icons/bs";

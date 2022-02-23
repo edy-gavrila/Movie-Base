@@ -4,8 +4,8 @@ import { useRouter } from "next/router";
 import { loginUserInFirebase, logoutUser } from "../APIs/auth";
 import { AuthContext } from "../Contexts/AuthContext";
 
-import LoginForm from "../components/LoginForm/LoginForm";
-import SiteLayout from "../components/SiteLayout/SiteLayout";
+import LoginForm from "../components/LoginForm";
+import SiteLayout from "../components/SiteLayout";
 import ErrorBanner from "../components/UI/ErrorBanner";
 import LoginUserInfo from "../components/UI/LoginUserInfo";
 

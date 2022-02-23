@@ -8,8 +8,8 @@ import {
   updateFirebaseProfileUserNameAndPhotoURL,
 } from "../APIs/auth";
 
-import RegistrationForm from "../components/RegistrationForm/RegistrationForm";
-import SiteLayout from "../components/SiteLayout/SiteLayout";
+import RegistrationForm from "../components/RegistrationForm";
+import SiteLayout from "../components/SiteLayout";
 import RegisterUserInfo from "../components/UI/RegisterUserInfo";
 import ErrorBanner from "../components/UI/ErrorBanner";
 
