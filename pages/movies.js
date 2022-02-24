@@ -4,8 +4,10 @@ import { AuthContext } from "../Contexts/AuthContext";
 import Head from "next/head";
 import SiteLayout from "../components/SiteLayout";
 import DefaultLists from "../components/DefaultLists";
+import MovieContextProvider from "../Contexts/MovieContextProvider";
+import PopularMovieList from "../components/PopularMovieList";
 
-export default function HomePage() {
+export default function Movies() {
   const { isAuthenticated } = useContext(AuthContext);
 
   return (
@@ -16,7 +18,9 @@ export default function HomePage() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <SiteLayout>
-        <DefaultLists />
+        <MovieContextProvider>
+          <PopularMovieList isExpandable={false} />
+        </MovieContextProvider>
       </SiteLayout>
     </>
   );

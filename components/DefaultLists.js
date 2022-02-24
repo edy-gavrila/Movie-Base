@@ -1,16 +1,17 @@
-import { useState, useEffect } from "react";
-
 import MovieContextProvider from "../Contexts/MovieContextProvider";
+import PopularActorsList from "./PopularActorsList";
+
 import PopularMovieList from "./PopularMovieList";
 import PopularTvShowsList from "./PopularTvShowsList";
 
-function DefaultMovieLists() {
+function DefaultLists() {
   return (
     <MovieContextProvider>
-      <PopularMovieList />
-      <PopularTvShowsList />
+      <PopularMovieList isExpandable />
+      <PopularTvShowsList isExpandable />
+      <PopularActorsList />
     </MovieContextProvider>
   );
 }
 
-export default DefaultMovieLists;
+export default DefaultLists;

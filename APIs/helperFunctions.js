@@ -42,4 +42,41 @@ const extractUsableTvShowData = (tvShowsList) => {
   return usableTvShowData;
 };
 
-export { formatDate, extractUsableMovieData, extractUsableTvShowData };
+const extractUsableActorData = (actorData) => {
+  const usableActorData = actorData.map((actor) => {
+    const knownForTitles = actor.known_for.map((title) => {
+
+      const releaseDate = title.first_air_date
+        ? title.first_air_date
+        : title.release_date;
+
+      const name = title.original_name
+        ? title.original_name
+        : title.original_title;
+
+      return {
+        id: title.id,
+        overview: title.overview,
+        name,
+        releaseDate,
+        posterPath: title.poster_path,
+      };
+    });
+
+    return {
+      id: actor.id,
+      name: actor.name,
+      profilePath: actor.profile_path,
+      knownForTitles,
+    };
+  });
+
+  return usableActorData;
+};
+
+export {
+  formatDate,
+  extractUsableMovieData,
+  extractUsableTvShowData,
+  extractUsableActorData,
+};

@@ -2,6 +2,7 @@ import { useCallback, useState } from "react";
 
 import { MovieDataContext, defaultMovieDataContext } from "./MovieDataContext";
 function MovieContextProvider({ children }) {
+  //TODO change to useReducer?
   const [movieData, setMovieData] = useState({ ...defaultMovieDataContext });
 
   const setPopularMovies = useCallback((movieList) => {
@@ -11,10 +12,17 @@ function MovieContextProvider({ children }) {
     }));
   }, []);
 
-  const setPopularTvShows = useCallback((tvShowsList) => {
+  const setPopularTvShows = useCallback((tvShowList) => {
     setMovieData((prevState) => ({
       ...prevState,
-      tvShows: { popular: tvShowsList },
+      tvShows: { popular: tvShowList },
+    }));
+  }, []);
+
+  const setPopularActors = useCallback((actorList) => {
+    setMovieData((prevState) => ({
+      ...prevState,
+      actors: { popular: actorList },
     }));
   }, []);
 
@@ -24,6 +32,7 @@ function MovieContextProvider({ children }) {
         ...movieData,
         onSetPopularMovies: setPopularMovies,
         onSetPopularTvShows: setPopularTvShows,
+        onSetPopularActors: setPopularActors,
       }}
     >
       {children}

@@ -1,6 +1,10 @@
 import tmdbKey from "./tmdbApiKey";
-const discoverMoviesBaseURL = `https://api.themoviedb.org/3/discover/movie?api_key=${tmdbKey}`;
-const discoverTvShowsBaseURL = `https://api.themoviedb.org/3/discover/tv?api_key=${tmdbKey}`;
+
+const baseURL = "https://api.themoviedb.org/3";
+const discoverMoviesBaseURL = `${baseURL}/discover/movie?api_key=${tmdbKey}`;
+
+const discoverTvShowsBaseURL = `${baseURL}/discover/tv?api_key=${tmdbKey}`;
+const popularCharactersBaseURL = `${baseURL}/person/popular?api_key=${tmdbKey}`;
 
 const getMoviesByPopularity = async (pageNumber = 1) => {
   if (pageNumber < 1) {
@@ -13,8 +17,8 @@ const getMoviesByPopularity = async (pageNumber = 1) => {
 
   const popularMoviesEndPoint = `${discoverMoviesBaseURL}&sort_by=popularity.desc&page=${pageNumber}`;
 
-  let moviesData = await fetch(popularMoviesEndPoint);
-  moviesData = await moviesData.json();
+  let moviesDataResponse = await fetch(popularMoviesEndPoint);
+  let moviesData = await moviesDataResponse.json();
   return moviesData;
 };
 
@@ -27,14 +31,36 @@ const getTvShowsByPopularity = async (pageNumber = 1) => {
     pageNumber = 500;
   }
   const popularTvShowsEndPoint = `${discoverTvShowsBaseURL}&sort_by=popularity.desc&page=${pageNumber}`;
-  let tvShowData = await fetch(popularTvShowsEndPoint);
-  tvShowData = await tvShowData.json();
+  let tvShowDataResponse = await fetch(popularTvShowsEndPoint);
+  let tvShowData = await tvShowDataResponse.json();
   return tvShowData;
 };
 
-const makeFullImagePath = (relativePath, imageWidth) => {
-  const baseURL = "https://image.tmdb.org/t/p/w";
-  return `${baseURL}${imageWidth}${relativePath}`;
+const getCharactersByPopularity = async (pageNumber = 1) => {
+  const popularCharactersEndPoint = `${popularCharactersBaseURL}&page=${[
+    pageNumber,
+  ]}`;
+  let popularCharactersDataResponse = await fetch(popularCharactersEndPoint);
+  let popularCharactersData = await popularCharactersDataResponse.json();
+  return popularCharactersData;
 };
 
-export { getMoviesByPopularity, getTvShowsByPopularity, makeFullImagePath };
+const getActorInfoById = async (actorId) => {
+  const actorByIdEndPoint = `${baseURL}/person/${actorId}?api_key=${tmdbKey}`;
+  let actorDataResponse = await fetch(actorByIdEndPoint);
+  let actorData = await actorDataResponse.json();
+  return actorData;
+};
+
+const makeFullImageUrl = (relativeUrl, imageWidth) => {
+  const baseURL = "https://image.tmdb.org/t/p/w";
+  return `${baseURL}${imageWidth}${relativeUrl}`;
+};
+
+export {
+  getMoviesByPopularity,
+  getTvShowsByPopularity,
+  getCharactersByPopularity,
+  getActorInfoById,
+  makeFullImageUrl,
+};

@@ -3,10 +3,10 @@ import React from "react";
 const defaultMovieDataContext = {
   movies: { popular: [] },
   tvShows: { popular: [] },
-  people: [],
+  actors: {popular: []},
   onSetPopularMovies: () => {},
   onSetPopularTvShows: () => {},
-  onSetPeople: () => {},
+  onSetPopularActors: () => {},
 };
 
 const MovieDataContext = React.createContext({ ...defaultMovieDataContext });

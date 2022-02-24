@@ -6,7 +6,7 @@ import { MovieDataContext } from "../Contexts/MovieDataContext";
 
 import MovieList from "./MovieList";
 
-function PopularTvShowsList() {
+function PopularTvShowsList({ isExpandable }) {
   const { onSetPopularTvShows, tvShows } = useContext(MovieDataContext);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -32,6 +32,7 @@ function PopularTvShowsList() {
 
   return (
     <MovieList
+      isExpandable={isExpandable}
       movieList={tvShows.popular}
       listTitle="Popular TV Shows"
       currentPage={currentPage}

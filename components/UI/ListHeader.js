@@ -1,7 +1,7 @@
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import CustomIcon from "./CustomIcon";
 
-function MovieListHeader({ text, isExpanded, onExpand, onContract }) {
+function ListHeader({ text, isExpanded, onExpand, onContract, isExpandable }) {
   const currentIcon = isExpanded ? <FaChevronUp /> : <FaChevronDown />;
 
   const chevronClickHandler = () => {
@@ -14,16 +14,18 @@ function MovieListHeader({ text, isExpanded, onExpand, onContract }) {
         className=" flex  mr-4 p-2 text-black hover:text-cyan-600"
         onClick={chevronClickHandler}
       >
-        <CustomIcon
-          icon={currentIcon}
-          size="1.5rem"
-          customClasses=" cursor-pointer hover:text-cyan-600 "
-        />
+        {isExpandable && (
+          <CustomIcon
+            icon={currentIcon}
+            size="1.5rem"
+            customClasses=" cursor-pointer hover:text-cyan-600 "
+          />
+        )}
       </div>
 
-      <h1 className="text-3xl text-black tracking-normal">{text}</h1>
+      <h1 className="text-2xl text-black tracking-normal">{text}</h1>
     </div>
   );
 }
 
-export default MovieListHeader;
+export default ListHeader;

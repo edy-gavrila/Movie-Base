@@ -5,20 +5,20 @@ import MenuLink from "./MenuLink";
 const menuItems = [
   {
     name: "Movies",
-    path: "/",
+    path: "/movies",
   },
   {
     name: "TV Shows",
-    path: "/",
+    path: "/tv-shows",
   },
   {
     name: "Actors",
-    path: "/",
+    path: "/actors",
   },
 ];
 
 function SiteNavLinks() {
-  const [selectedMenuItem, setSelectedMenuItem] = useState(0);
+  const [selectedMenuItem, setSelectedMenuItem] = useState(-1);
 
   const menuLinks = menuItems.map((item, idx) => {
     const isItemSelected = idx === selectedMenuItem;

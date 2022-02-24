@@ -6,7 +6,7 @@ import { extractUsableMovieData } from "../APIs/helperFunctions";
 
 import MovieList from "./MovieList";
 
-function PopularMovieList() {
+function PopularMovieList({isExpandable}) {
   const { onSetPopularMovies, movies } = useContext(MovieDataContext);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -29,13 +29,14 @@ function PopularMovieList() {
   const setPageHandler = (page) => {
     if (page > 0 && page <= 500) setCurrentPage(page);
   };
-  
+
   return (
     <MovieList
       movieList={movies.popular}
       listTitle="Popular Movies"
       currentPage={currentPage}
       onSetPage={setPageHandler}
+      isExpandable={isExpandable}
     />
   );
 }
