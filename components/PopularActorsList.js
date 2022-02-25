@@ -9,7 +9,7 @@ import BottomFade from "./UI/BottomFade";
 import ListHeader from "./UI/ListHeader";
 import PageChanger from "./UI/PageChanger";
 
-function PopularActorsList() {
+function PopularActorsList({ isExpandable }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [isListExpanded, setIsListExpanded] = useState(false);
   const { onSetPopularActors, actors } = useContext(MovieDataContext);
@@ -61,6 +61,7 @@ function PopularActorsList() {
           isExpanded={isListExpanded}
           onExpand={expandListHandler}
           onContract={contractListHandler}
+          isExpandable={isExpandable}
         />
         <PageChanger
           currentPage={currentPage}

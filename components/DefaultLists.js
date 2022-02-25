@@ -9,7 +9,7 @@ function DefaultLists() {
     <MovieContextProvider>
       <PopularMovieList isExpandable />
       <PopularTvShowsList isExpandable />
-      <PopularActorsList />
+      <PopularActorsList isExpandable />
     </MovieContextProvider>
   );
 }

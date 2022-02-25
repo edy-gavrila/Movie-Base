@@ -18,5 +18,12 @@
    Reworked some portions of the UI. Continued to work on the authentication system.
 
 22/02/22
-    Started working on the movie data provider.
-     
+    Started working on the movie data provider context.
+    Wrote some data fetching functions to interact with the tmdb database.
+
+23/02/22
+    Worked on the movie list and tv shows list components, worked on the UI for the movie card. Did a lot of refactoring along the way.
+    Started working on the actors list.
+
+24/02/22
+    Worked on the actors list, actor card and refactor some bits.

@@ -58,6 +58,13 @@ function MovieList({
       <div className=" flex flex-col  sm:flex-row flex-wrap gap-4">
         {content}
       </div>
+      {isListExpanded && (
+        <PageChanger
+          currentPage={currentPage}
+          onSetNextPage={setNextPageHandler}
+          onSetPreviousPage={setPreviousPageHandler}
+        />
+      )}
       {isListContracted && <BottomFade toColor={"slate-300"} />}
     </div>
   );

@@ -1,4 +1,4 @@
-import SiteLayout from "../components/SiteLayout/SiteLayout";
+import SiteLayout from "../components/SiteLayout";
 import CustomIcon from "../components/UI/CustomIcon";
 import { FaTools } from "react-icons/fa";
 
