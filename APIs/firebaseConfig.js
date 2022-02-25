@@ -1,6 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// import firebaseKey from "./firebaseKey"; //you may need to create this file with you own firebase key.
+
 const firebaseKey = process.env.NEXT_PUBLIC_FIREBASE_KEY;
 
 const firebaseConfig = {

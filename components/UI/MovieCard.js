@@ -5,7 +5,7 @@ import Image from "next/image";
 
 function MovieCard({ movieData }) {
   const { title, posterPath, releaseDate, voteAverage, overview } = movieData;
-  const imageWidth = 185;
+  const imageWidth = "185";
   const imageHeight = "278";
   const fullPosterUrl = makeFullImageUrl(posterPath, imageWidth);
   const formatedDate = formatDate(releaseDate);

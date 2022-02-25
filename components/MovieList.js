@@ -65,7 +65,7 @@ function MovieList({
           onSetPreviousPage={setPreviousPageHandler}
         />
       )}
-      {isListContracted && <BottomFade toColor={"slate-300"} />}
+      {isListContracted && <BottomFade />}
     </div>
   );
 }

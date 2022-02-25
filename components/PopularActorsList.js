@@ -21,7 +21,6 @@ function PopularActorsList({ isExpandable }) {
         const cleanedPopularActorData = extractUsableActorData(
           popularActorList.results
         );
-        console.log(cleanedPopularActorData);
         onSetPopularActors(cleanedPopularActorData);
       } catch (error) {
         console.log(error.message);
@@ -70,7 +69,7 @@ function PopularActorsList({ isExpandable }) {
         />
       </div>
       <ActorList actorData={actors.popular} isExpanded={isListExpanded} />
-      {isListContracted && <BottomFade toColor={"slate-300"} />}
+      {isListContracted && <BottomFade />}
     </section>
   );
 }

@@ -2,7 +2,7 @@ import { IconContext } from "react-icons/lib";
 
 function CustomIcon({ icon, customClasses, size }) {
   return (
-    <div className={`inline-block`}>
+    <div className="inline-block">
       <IconContext.Provider
         value={{ size: `${size}`, className: `${customClasses}` }}
       >
