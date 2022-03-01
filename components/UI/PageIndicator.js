@@ -9,7 +9,7 @@ function PageIndicator({ currentPage, firstPage, lastPage }) {
   const showLastPage = currentPage + 2 <= lastPage;
 
   return (
-    <div className="text-cyan-600 text-sm flex gap-px items-center ">
+    <div className="text-cyan-600 text-sm flex gap-px items-center">
       {showFirstPage && <span>{currentPage - 2}</span>}
       {showSecondPage && <span>{currentPage - 1}</span>}
       <span className="font-bold text-base">{currentPage}</span>

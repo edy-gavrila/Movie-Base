@@ -27,3 +27,15 @@
 
 24/02/22
     Worked on the actors list, actor card and refactor some bits.
+
+25/02/22
+    Began work on movie and tv show details cards. 
+    Refactored some code to make code more DRY
+
+28/02/22
+    Worked on API fetching for the movie and tv show data.
+    Worked on fetching actor data and crew data.
+
+01/03/22
+    Finished movie and tv show details cards.
+    Did lots of refactoring, created separate components for 

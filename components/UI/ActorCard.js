@@ -7,7 +7,7 @@ function ActorCard({ actorData }) {
   const imageHeight = "278";
   const fullProfileUrl = makeFullImageUrl(profilePath, imageWidth);
 
-  const knownForContent = knownForTitles.map((title) => `${title.name}, `);
+  const knownForContent = knownForTitles.map((title) => title.name).join(", ");
 
   const containerClasses =
     "bg-white rounded-md overflow-hidden flex sm:block sm:w-[185px] shadow-lg  text-black tracking-normal cursor-pointer";

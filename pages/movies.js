@@ -10,7 +10,7 @@ import { AppStateContext } from "../Contexts/AppStateContext";
 export default function Movies() {
   const { isAuthenticated } = useContext(AuthContext);
   const { onSetSlectedMenuItemIndex } = useContext(AppStateContext);
-  
+
   useEffect(() => onSetSlectedMenuItemIndex(1), [onSetSlectedMenuItemIndex]);
   return (
     <>
@@ -20,9 +20,7 @@ export default function Movies() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <SiteLayout>
-        <MovieContextProvider>
-          <PopularMovieList isExpandable={false} />
-        </MovieContextProvider>
+        <PopularMovieList isExpandable={false} />
       </SiteLayout>
     </>
   );

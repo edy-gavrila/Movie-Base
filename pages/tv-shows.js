@@ -10,7 +10,7 @@ import PopularTvShowsList from "../components/PopularTvShowsList";
 export default function Movies() {
   const { isAuthenticated } = useContext(AuthContext);
   const { onSetSlectedMenuItemIndex } = useContext(AppStateContext);
-  
+
   useEffect(() => onSetSlectedMenuItemIndex(2), [onSetSlectedMenuItemIndex]);
   return (
     <>
@@ -20,9 +20,7 @@ export default function Movies() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <SiteLayout selectedMenuItemIndex={1}>
-        <MovieContextProvider>
-          <PopularTvShowsList isExpandable={false} />
-        </MovieContextProvider>
+        <PopularTvShowsList isExpandable={false} />
       </SiteLayout>
     </>
   );

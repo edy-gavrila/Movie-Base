@@ -20,9 +20,7 @@ export default function Actors() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <SiteLayout selectedMenuItemIndex={2}>
-        <MovieContextProvider>
-          <PopularActorsList isExpandable={false} />
-        </MovieContextProvider>
+        <PopularActorsList isExpandable={false} />
       </SiteLayout>
     </>
   );
