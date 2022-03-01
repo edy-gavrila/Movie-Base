@@ -84,7 +84,7 @@ Various config files for next, tailwind, jest
 Thank you to all the providers of the free resources this app uses:
 
 - [Tailwindcss](https://tailwindcss.com/)
-- [Firebase](<(https://firebase.google.com/)>)
+- [Firebase](https://firebase.google.com/)
 - [The movie database](https://www.themoviedb.org/)
 - [Vercel](https://www.vercel.com/) - for free hosting.
 - [React-icons](https://react-icons.github.io/react-icons/) - for wonderful React icon components.
