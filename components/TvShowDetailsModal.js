@@ -91,7 +91,7 @@ function TvShowDetailsModal({ tvShowData }) {
           />
         </div>
 
-        <div className="flex flex-col grow h-full overflow-auto  p-2 md:pl-4">
+        <div className="flex flex-col  h-full overflow-auto  p-2 md:pl-4">
           <DetailsModalHeader
             title={title}
             releaseYear={releaseYear}

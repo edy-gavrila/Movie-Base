@@ -24,7 +24,7 @@ function Credits({ director, producer, topThreeCast }) {
   return (
     <div className="mb-4 flex">
       {showCrewCard && (
-        <div className="mr-8">
+        <div className="mr-1 sm:mr-8">
           <p className="text-black">{mainCrewTitle}</p>
           <PersonCardSmall
             relativePath={mainCrewProfilePath}
@@ -35,7 +35,7 @@ function Credits({ director, producer, topThreeCast }) {
 
       <div>
         <p>Cast: </p>
-        <div className="flex gap-6 justify-center">{castCards}</div>
+        <div className="flex gap-1 sm:gap-6 justify-center w-full">{castCards}</div>
       </div>
     </div>
   );
