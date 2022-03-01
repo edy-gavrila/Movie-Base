@@ -1,12 +1,13 @@
-import React from "react";
-
 function DetailsModalHeader({
   title,
   releaseYear,
   genreList,
   runtime,
-  seasons,
+  numberOfseasons,
 }) {
+  const numberOfseasonsString = `${numberOfseasons} season${
+    numberOfseasons === 1 ? "" : "s"
+  }`;
   return (
     <div>
       <h2 className="text-black text-2xl  font-bold">
@@ -15,7 +16,7 @@ function DetailsModalHeader({
       <ul className="list-disc flex flex-wrap overflow-hidden pl-4 mb-2 text-sm">
         <li className="mr-6">{genreList}</li>
         {runtime && <li className="">{`${runtime} mins`}</li>}
-        {seasons && <li className="">{`${seasons} seasons`}</li>}
+        {numberOfseasons && <li className="">{numberOfseasonsString}</li>}
       </ul>
     </div>
   );

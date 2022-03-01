@@ -95,8 +95,15 @@ const extractDirectorFromCredits = (credits) => {
   if (!credits.crew) {
     return "";
   }
-  const director = credits.crew.filter((person) => person.job === "Director");
-  return director[0];
+  const directors = credits.crew.filter((person) => person.job === "Director");
+  return directors[0];
+};
+const extractProducerFromCredits = (credits) => {
+  if (!credits.crew) {
+    return "";
+  }
+  const producers = credits.crew.filter((person) => person.job === "Producer");
+  return producers[0];
 };
 
 const disableBodyScrolling = () => {
@@ -114,6 +121,7 @@ export {
   extractUsableActorData,
   extractGenres,
   extractDirectorFromCredits,
+  extractProducerFromCredits,
   disableBodyScrolling,
   enableBodyScrolling,
 };

@@ -1,6 +1,15 @@
 import PersonCardSmall from "./PersonCardSmall";
 
-function Credits({ director, topThreeCast, topThreeRoles }) {
+function Credits({ director, producer, topThreeCast }) {
+  const showCrewCard = director || producer;
+  const mainCrewTitle = director ? "Director: " : producer ? "Producer: " : "";
+  const mainCrewName = director ? director.name : producer ? producer.name : "";
+  const mainCrewProfilePath = director
+    ? director.profile_path
+    : producer
+    ? producer.profile_path
+    : "";
+
   const castCards = topThreeCast.map((castMember) => {
     return (
       <PersonCardSmall
@@ -11,19 +20,22 @@ function Credits({ director, topThreeCast, topThreeRoles }) {
       />
     );
   });
-  console.log(topThreeCast);
+
   return (
     <div className="mb-4 flex">
-      <div className="mr-8">
-        <p className="text-black">Director:</p>
-        <PersonCardSmall
-          relativePath={director.profile_path}
-          name={director.name}
-        />
-      </div>
+      {showCrewCard && (
+        <div className="mr-8">
+          <p className="text-black">{mainCrewTitle}</p>
+          <PersonCardSmall
+            relativePath={mainCrewProfilePath}
+            name={mainCrewName}
+          />
+        </div>
+      )}
+
       <div>
         <p>Cast: </p>
-        <div className="flex gap-2 justify-center">{castCards}</div>
+        <div className="flex gap-6 justify-center">{castCards}</div>
       </div>
     </div>
   );

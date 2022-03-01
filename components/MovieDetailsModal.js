@@ -55,7 +55,6 @@ function MovieDetailsModal({ movieData }) {
   }, [id]);
 
   const apiRequestImageWidth = 780;
-
   const posterImageWidth = 334;
   const posterImageHeight = 500;
   const backdropImageWidth = 780;

@@ -4,12 +4,19 @@ import {
   getTvShowCredits,
   makeFullImageUrl,
 } from "../APIs/tmdb";
-import { getReleaseYear, extractGenres } from "../APIs/helperFunctions";
+import {
+  getReleaseYear,
+  extractGenres,
+  extractProducerFromCredits,
+} from "../APIs/helperFunctions";
 
 import Backdrop from "./UI/Backdrop";
 import Image from "next/image";
 import StarRating from "./UI/StarRating";
 import DetailsCardActions from "./UI/DetailsModalActions";
+import DetailsModalInnerContainer from "./UI/DetailsModalInnerContainer";
+import DetailsModalHeader from "./UI/DetailsModalHeader";
+import Credits from "./UI/Credits";
 
 function TvShowDetailsModal({ tvShowData }) {
   const {
@@ -47,27 +54,26 @@ function TvShowDetailsModal({ tvShowData }) {
     fetchTvShowDetails(id);
   }, [id]);
 
-  const posterImageWidth = 300;
-  const posterImageHeight = 450;
+  const apiRequestImageWidth = 780;
+  const posterImageWidth = 334;
+  const posterImageHeight = 500;
   const backdropImageWidth = 780;
   const backdropImageHeight = 439;
   const { genres, seasons, tagline } = tvShowDetails;
   const genreList = extractGenres(genres).join(", ");
 
-  const posterUrl = makeFullImageUrl(posterPath, posterImageWidth);
+  const posterUrl = makeFullImageUrl(posterPath, apiRequestImageWidth);
   const backdropUrl = makeFullImageUrl(backdropPath, backdropImageWidth);
 
   const releaseYear = getReleaseYear(releaseDate);
   const numberOfSeasons = seasons ? seasons.length : 0;
-  const numberOfSeasonsString = `${numberOfSeasons} season${
-    numberOfSeasons === 1 ? "" : "s"
-  }`;
+  const producer = extractProducerFromCredits(tvShowCredits);
+  const topThreeCast = tvShowCredits.cast ? tvShowCredits.cast.slice(0, 3) : [];
 
-  console.log(tvShowDetails);
   return (
     <Backdrop>
-      <div className="flex flex-col sm:flex-row items-center bg-white rounded-md shadow-lg w-full h-full sm:h-auto md:w-4/5 ">
-        <div className="hidden sm:block h-[450px] w-[300px]">
+      <DetailsModalInnerContainer>
+        <div className="hidden sm:block h-[500px] w-[334px]">
           <Image
             src={posterUrl}
             width={posterImageWidth}
@@ -86,23 +92,23 @@ function TvShowDetailsModal({ tvShowData }) {
         </div>
 
         <div className="flex flex-col grow h-full overflow-auto  p-2 md:pl-4">
-          <h2 className="text-black text-2xl  font-bold tracking-normal">
-            {`${title} (${releaseYear})`}
-          </h2>
-          <ul className="list-disc flex flex-wrap overflow-hidden pl-4 mb-2 text-sm">
-            <li className="mr-6">{genreList}</li>
-            <li className="">{`${numberOfSeasonsString}`}</li>
-          </ul>
+          <DetailsModalHeader
+            title={title}
+            releaseYear={releaseYear}
+            genreList={genreList}
+            numberOfseasons={numberOfSeasons}
+          />
           <div className="mb-2 w-full flex justify-center">
             <StarRating rating={voteAverage} />
           </div>
+          <Credits topThreeCast={topThreeCast} producer={producer} />
           <p className="italic text-black mb-4">{tagline}</p>
           <p>{overview}</p>
           <div className="grow flex items-end">
             <DetailsCardActions />
           </div>
         </div>
-      </div>
+      </DetailsModalInnerContainer>
     </Backdrop>
   );
 }
