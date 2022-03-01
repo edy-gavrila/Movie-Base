@@ -5,7 +5,7 @@ import { FaTools } from "react-icons/fa";
 function ResetPassword() {
   return (
     <SiteLayout>
-      <section className=" mt-[20rem] pl-20 flex">
+      <section className="mt-[10rem] sm:mt-[15rem] pl-4 sm:pl-20 flex">
         <CustomIcon
           icon={<FaTools />}
           size="3rem"

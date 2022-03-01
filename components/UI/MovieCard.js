@@ -2,17 +2,29 @@ import { makeFullImageUrl } from "../../APIs/tmdb";
 import { formatDate } from "../../APIs/helperFunctions";
 import StarRating from "./StarRating";
 import Image from "next/image";
+import { useContext } from "react";
+import { AppStateContext } from "../../Contexts/AppStateContext";
 
-function MovieCard({ movieData }) {
+function MovieCard({ movieData, onSetSelectedMovieOrShow }) {
+  const { onShowDetailsModal } = useContext(AppStateContext);
+
   const { title, posterPath, releaseDate, voteAverage, overview } = movieData;
   const imageWidth = "185";
   const imageHeight = "278";
   const fullPosterUrl = makeFullImageUrl(posterPath, imageWidth);
   const formatedDate = formatDate(releaseDate);
 
+  const cardClickHandler = () => {
+    onShowDetailsModal();
+    onSetSelectedMovieOrShow(movieData);
+  };
+
   return (
-    <div className="bg-white rounded-md overflow-hidden flex sm:block sm:w-[185px] shadow-lg  text-black tracking-normal">
-      <div>
+    <div
+      className="bg-white rounded-md overflow-hidden flex sm:block sm:w-[185px] shadow-lg  text-black tracking-normal cursor-pointer"
+      onClick={cardClickHandler}
+    >
+      <div className="h-[278px]">
         <Image
           src={fullPosterUrl}
           width={imageWidth}
@@ -26,7 +38,7 @@ function MovieCard({ movieData }) {
         <h4 className="sm:text-sm text-center sm:text-left font-bold w-full sm:h-[3rem] overflow-hidden">
           {title}
         </h4>
-        <p className="w-full text-xs text-slate-500  sm:hidden max-h-48 ">
+        <p className="flex items-center w-full text-xs text-slate-500  sm:hidden h-48 overflow-scroll">
           {overview}
         </p>
         <div>

@@ -12,6 +12,17 @@ const formatDate = (date) => {
   }
 };
 
+const getReleaseYear = (date) => {
+  let releaseYear = "";
+  try {
+    releaseYear = new Date(date).getFullYear();
+  } catch (error) {
+    console.error(error.message);
+  } finally {
+    return releaseYear;
+  }
+};
+
 const extractUsableMovieData = (movieList) => {
   const usableMovieData = movieList.map((movie) => {
     return {
@@ -45,7 +56,6 @@ const extractUsableTvShowData = (tvShowsList) => {
 const extractUsableActorData = (actorData) => {
   const usableActorData = actorData.map((actor) => {
     const knownForTitles = actor.known_for.map((title) => {
-
       const releaseDate = title.first_air_date
         ? title.first_air_date
         : title.release_date;
@@ -74,9 +84,36 @@ const extractUsableActorData = (actorData) => {
   return usableActorData;
 };
 
+const extractGenres = (genresList) => {
+  if (!genresList) {
+    return [];
+  }
+  return genresList.map((genre) => genre.name);
+};
+
+const extractDirectorFromCredits = (credits) => {
+  if (!credits.crew) {
+    return "";
+  }
+  const director = credits.crew.filter((person) => person.job === "Director");
+  return director[0];
+};
+
+const disableBodyScrolling = () => {
+  document.body.style.overflow = "hidden";
+};
+const enableBodyScrolling = () => {
+  document.body.style.overflow = "auto";
+};
+
 export {
   formatDate,
+  getReleaseYear,
   extractUsableMovieData,
   extractUsableTvShowData,
   extractUsableActorData,
+  extractGenres,
+  extractDirectorFromCredits,
+  disableBodyScrolling,
+  enableBodyScrolling,
 };

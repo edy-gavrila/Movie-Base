@@ -11,7 +11,7 @@ import PageChanger from "./UI/PageChanger";
 
 function PopularActorsList({ isExpandable }) {
   const [currentPage, setCurrentPage] = useState(1);
-  const [isListExpanded, setIsListExpanded] = useState(false);
+  const [isListExpanded, setIsListExpanded] = useState(!isExpandable);
   const { onSetPopularActors, actors } = useContext(MovieDataContext);
 
   useEffect(() => {
@@ -54,7 +54,7 @@ function PopularActorsList({ isExpandable }) {
   }`;
   return (
     <section className={containerClasses}>
-      <div className="flex flex-col sm:flex-row sm:items-center gap-8 mb-4">
+      <div className="flex  sm:items-center gap-8 mb-4">
         <ListHeader
           text="Popular Actors"
           isExpanded={isListExpanded}
@@ -70,6 +70,13 @@ function PopularActorsList({ isExpandable }) {
       </div>
       <ActorList actorData={actors.popular} isExpanded={isListExpanded} />
       {isListContracted && <BottomFade />}
+      {isListExpanded && (
+        <PageChanger
+          currentPage={currentPage}
+          onSetNextPage={setNextPageHandler}
+          onSetPreviousPage={setPreviousPageHandler}
+        />
+      )}
     </section>
   );
 }

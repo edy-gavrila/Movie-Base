@@ -5,7 +5,7 @@ import { AuthContext, defaultUserContext } from "./AuthContext";
 function AuthContextProvider({ children }) {
   const [authState, setAuthState] = useState({ ...defaultUserContext });
 
-  const setUserAuthDataHandler = ({ email, displayName, photoURL, uid }) => {
+  const onSetUserAuthData = ({ email, displayName, photoURL, uid }) => {
     setAuthState({
       ...authState,
       userData: { email, displayName, photoURL, uid },
@@ -13,13 +13,13 @@ function AuthContextProvider({ children }) {
     });
   };
 
-  const logoutUserHandler = useCallback(() => {
+  const onUserLogout = useCallback(() => {
     setAuthState({
       ...defaultUserContext,
     });
   }, []);
 
-  const setGuestModeHandler = useCallback(() => {
+  const onSetGuestMode = useCallback(() => {
     setAuthState({
       userData: {
         email: null,
@@ -36,9 +36,9 @@ function AuthContextProvider({ children }) {
     <AuthContext.Provider
       value={{
         ...authState,
-        onSetUserAuthData: setUserAuthDataHandler,
-        onUserLogout: logoutUserHandler,
-        onSetGuestMode: setGuestModeHandler,
+        onSetUserAuthData,
+        onUserLogout,
+        onSetGuestMode,
       }}
     >
       {children}

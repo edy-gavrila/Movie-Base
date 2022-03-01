@@ -6,11 +6,11 @@ import PopularTvShowsList from "./PopularTvShowsList";
 
 function DefaultLists() {
   return (
-    <MovieContextProvider>
+    <>
       <PopularMovieList isExpandable />
       <PopularTvShowsList isExpandable />
       <PopularActorsList isExpandable />
-    </MovieContextProvider>
+    </>
   );
 }
 

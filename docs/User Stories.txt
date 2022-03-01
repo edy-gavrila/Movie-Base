@@ -4,3 +4,4 @@ User Stories:
 3. The user can login, register or use the site in guest mode.
 4. When in guest mode all data is saved in localStorage
 5. There should be some default movie lists and tv show lists.
+6. When viewing movie details, the user can add a movie to favourites list, to watch list, to personal collection list.

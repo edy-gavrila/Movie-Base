@@ -5,24 +5,38 @@ function MovieContextProvider({ children }) {
   //TODO change to useReducer?
   const [movieData, setMovieData] = useState({ ...defaultMovieDataContext });
 
-  const setPopularMovies = useCallback((movieList) => {
+  const onSetPopularMovies = useCallback((movieList) => {
     setMovieData((prevState) => ({
       ...prevState,
-      movies: { popular: movieList },
+      movies: { popular: [...movieList] },
     }));
   }, []);
 
-  const setPopularTvShows = useCallback((tvShowList) => {
+  const onSetPopularTvShows = useCallback((tvShowList) => {
     setMovieData((prevState) => ({
       ...prevState,
-      tvShows: { popular: tvShowList },
+      tvShows: { popular: [...tvShowList] },
     }));
   }, []);
 
-  const setPopularActors = useCallback((actorList) => {
+  const onSetPopularActors = useCallback((actorList) => {
     setMovieData((prevState) => ({
       ...prevState,
-      actors: { popular: actorList },
+      actors: { popular: [...actorList] },
+    }));
+  }, []);
+
+  const onSetSelectedMovieOrShow = useCallback((movieData, type) => {
+    setMovieData((prevState) => ({
+      ...prevState,
+      selectedMovieOrShow: { ...movieData, type },
+    }));
+  }, []);
+
+  const onSetSelectedActor = useCallback((actorData) => {
+    setMovieData((prevState) => ({
+      ...prevState,
+      selectedActor: { ...actorData },
     }));
   }, []);
 
@@ -30,9 +44,11 @@ function MovieContextProvider({ children }) {
     <MovieDataContext.Provider
       value={{
         ...movieData,
-        onSetPopularMovies: setPopularMovies,
-        onSetPopularTvShows: setPopularTvShows,
-        onSetPopularActors: setPopularActors,
+        onSetPopularMovies,
+        onSetPopularTvShows,
+        onSetPopularActors,
+        onSetSelectedMovieOrShow,
+        onSetSelectedActor,
       }}
     >
       {children}

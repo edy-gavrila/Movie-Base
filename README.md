@@ -1,3 +1,11 @@
+# Movie Base
+
+Welcome to Movie Base, an app that makes it easy to build your own list of films and  tv shows that you would like to watch.
+Please visit [https://movie-base-2.vercel.app/] to use the app.
+
+## For developers:
+This app is build with Next.js, Firebase, TMDB, Tailwind and deployed on vercel
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

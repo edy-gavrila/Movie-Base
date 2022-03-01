@@ -7,7 +7,8 @@ import { MovieDataContext } from "../Contexts/MovieDataContext";
 import MovieList from "./MovieList";
 
 function PopularTvShowsList({ isExpandable }) {
-  const { onSetPopularTvShows, tvShows } = useContext(MovieDataContext);
+  const { onSetPopularTvShows, tvShows, onSetSelectedMovieOrShow } =
+    useContext(MovieDataContext);
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
@@ -30,6 +31,10 @@ function PopularTvShowsList({ isExpandable }) {
     if (page > 0 && page <= 500) setCurrentPage(page);
   };
 
+  const setSelectedMovieOrShowHandler = (movieOrShowData) => {
+    onSetSelectedMovieOrShow(movieOrShowData, "tvShow");
+  };
+
   return (
     <MovieList
       isExpandable={isExpandable}
@@ -37,6 +42,7 @@ function PopularTvShowsList({ isExpandable }) {
       listTitle="Popular TV Shows"
       currentPage={currentPage}
       onSetPage={setPageHandler}
+      onSetSelectedMovieOrShow={setSelectedMovieOrShowHandler}
     />
   );
 }

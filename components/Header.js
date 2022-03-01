@@ -8,7 +8,7 @@ function Header() {
       <nav className="container px-1 sm:px-0 py-3 sm:flex sm:gap-5 sm:items-center text-white min-w-[360px]">
         <SiteLogo />
         <div className="flex flex-1">
-          <SiteNavLinks />
+          <SiteNavLinks/>
           <AuthSection />
         </div>
       </nav>

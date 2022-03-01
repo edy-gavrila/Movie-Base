@@ -10,7 +10,7 @@ function ActorCard({ actorData }) {
   const knownForContent = knownForTitles.map((title) => `${title.name}, `);
 
   const containerClasses =
-    "bg-white rounded-md overflow-hidden flex sm:block sm:w-[185px] shadow-lg  text-black tracking-normal";
+    "bg-white rounded-md overflow-hidden flex sm:block sm:w-[185px] shadow-lg  text-black tracking-normal cursor-pointer";
 
   return (
     <div className={containerClasses}>

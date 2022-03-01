@@ -6,8 +6,9 @@ import { extractUsableMovieData } from "../APIs/helperFunctions";
 
 import MovieList from "./MovieList";
 
-function PopularMovieList({isExpandable}) {
-  const { onSetPopularMovies, movies } = useContext(MovieDataContext);
+function PopularMovieList({ isExpandable }) {
+  const { onSetPopularMovies, movies, onSetSelectedMovieOrShow } =
+    useContext(MovieDataContext);
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
@@ -30,6 +31,10 @@ function PopularMovieList({isExpandable}) {
     if (page > 0 && page <= 500) setCurrentPage(page);
   };
 
+  const setSelectedMovieOrShowHandler = (movieOrShowData) => {
+    onSetSelectedMovieOrShow(movieOrShowData, "movie");
+  };
+
   return (
     <MovieList
       movieList={movies.popular}
@@ -37,6 +42,7 @@ function PopularMovieList({isExpandable}) {
       currentPage={currentPage}
       onSetPage={setPageHandler}
       isExpandable={isExpandable}
+      onSetSelectedMovieOrShow={setSelectedMovieOrShowHandler}
     />
   );
 }

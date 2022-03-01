@@ -1,15 +1,17 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../Contexts/AuthContext";
 
 import Head from "next/head";
 import SiteLayout from "../components/SiteLayout";
-import DefaultLists from "../components/DefaultLists";
 import MovieContextProvider from "../Contexts/MovieContextProvider";
 import PopularMovieList from "../components/PopularMovieList";
+import { AppStateContext } from "../Contexts/AppStateContext";
 
 export default function Movies() {
   const { isAuthenticated } = useContext(AuthContext);
-
+  const { onSetSlectedMenuItemIndex } = useContext(AppStateContext);
+  
+  useEffect(() => onSetSlectedMenuItemIndex(1), [onSetSlectedMenuItemIndex]);
   return (
     <>
       <Head>

@@ -3,9 +3,13 @@ import DefaultUserAvatar from "./DefaultUserAvatar";
 
 function UserHeader({ username, photoURL }) {
   return (
-    <div className="flex items-center">
+    <div className="flex items-center mr-2">
       {(photoURL && (
-        <img src={photoURL} alt="" className="w-8 h-8 mr-4 rounded-full" />
+        <img
+          src={photoURL}
+          alt="User Avatar"
+          className="w-8 h-8 mr-2 rounded-full "
+        />
       )) || <DefaultUserAvatar />}
       <small>{username}</small>
     </div>

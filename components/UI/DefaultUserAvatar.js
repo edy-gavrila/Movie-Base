@@ -4,7 +4,7 @@ import CustomIcon from "./CustomIcon";
 
 function DefaultUserAvatar() {
   return (
-    <div className="cursor-pointer mr-4">
+    <div className="flex cursor-pointer mr-2">
       <CustomIcon icon={<FaUserCircle />} size="2rem" />
     </div>
   );

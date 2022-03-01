@@ -11,6 +11,7 @@ function MovieList({
   currentPage,
   onSetPage,
   isExpandable,
+  onSetSelectedMovieOrShow,
 }) {
   const [isListExpanded, setIsListExpanded] = useState(!isExpandable);
 
@@ -29,7 +30,13 @@ function MovieList({
   };
 
   const content = movieList.map((movie) => {
-    return <MovieCard key={movie.id} movieData={movie} />;
+    return (
+      <MovieCard
+        key={movie.id}
+        movieData={movie}
+        onSetSelectedMovieOrShow={onSetSelectedMovieOrShow}
+      />
+    );
   });
 
   const containerClasses = `container py-4 overflow-hidden relative  mb-12 ${
@@ -40,7 +47,7 @@ function MovieList({
 
   return (
     <div className={containerClasses}>
-      <div className="flex flex-col sm:flex-row sm:items-center gap-8 mb-4">
+      <div className="flex sm:items-center gap-8 mb-4">
         <ListHeader
           text={listTitle}
           isExpandable={isExpandable}
