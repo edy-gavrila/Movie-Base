@@ -35,10 +35,10 @@ function MovieCard({ movieData, onSetSelectedMovieOrShow }) {
       </div>
 
       <div className="p-2 h-[275px] sm:h-24 flex flex-col grow justify-between items-center sm:items-start">
-        <h4 className="sm:text-sm text-center sm:text-left font-bold w-full sm:h-[3rem] overflow-hidden">
+        <h4 className="sm:text-sm text-center sm:text-left font-bold w-full  overflow-hidden">
           {title}
         </h4>
-        <p className="flex items-center w-full text-xs text-slate-500  sm:hidden h-48 overflow-scroll">
+        <p className="flex  w-full text-xs text-slate-500  sm:hidden  overflow-scroll">
           {overview}
         </p>
         <div>
