@@ -1,0 +1,12 @@
+1. Enable authentication persistence for firebase login. Guest mode log in should be set to persistence by default. - DONE
+2. Add a search box in the navbar.
+3. Add a hero banner on the landing page, asking the user to sign up for more.
+4. Move from modal pop-ups to dynamic routes when showing movie details. Create new layout for large screen sizes
+5. Create actors details page.
+5. Add functionality for users to save films in different lists.
+6. Add acknowledgment for tmdb in the footer section.
+7. Create the user database entry when the user registers for the first time.
+8. Create pop-up menus for the user avatar, My Lists menu item.
+9. Add functionality so that when user changes to another page in the lists, the view goes back to the top of the list.
+10 Add functionality for resetting the password.
+11 Add a nice default image for movies or shows that do not have a poster image.

@@ -11,17 +11,31 @@ function Footer() {
       <ul>
         <li>
           <CustomIcon icon={<FaTwitter />} size="1rem" customClasses="mr-2" />
-          <a href="https://twitter.com/eduard_gavrila">Twitter</a>
+          <a
+            href="https://twitter.com/eduard_gavrila"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Twitter
+          </a>
         </li>
         <li>
-          {" "}
           <CustomIcon icon={<BsGithub />} size="1rem" customClasses="mr-2" />
-          <a href="https://github.com/edy-gavrila">Github</a>
+          <a
+            href="https://github.com/edy-gavrila"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Github
+          </a>
         </li>
         <li>
-          {" "}
           <CustomIcon icon={<FaLinkedin />} size="1rem" customClasses="mr-2" />
-          <a href="https://www.linkedin.com/in/eduard-gavrila-129951136/">
+          <a
+            href="https://www.linkedin.com/in/eduard-gavrila-129951136/"
+            target="_blank"
+            rel="noreferrer"
+          >
             LinkedIn
           </a>
         </li>

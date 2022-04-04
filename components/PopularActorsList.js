@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useRef } from "react";
 
 import { extractUsableActorData } from "../APIs/helperFunctions";
 import { getCharactersByPopularity } from "../APIs/tmdb";
@@ -13,6 +13,8 @@ function PopularActorsList({ isExpandable }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [isListExpanded, setIsListExpanded] = useState(!isExpandable);
   const { onSetPopularActors, actors } = useContext(MovieDataContext);
+
+  const containerRef = useRef();
 
   useEffect(() => {
     const fetchPopularActors = async (page = 1) => {
@@ -42,9 +44,17 @@ function PopularActorsList({ isExpandable }) {
 
   const setNextPageHandler = () => {
     setPageHandler(currentPage + 1);
+    scrollToListTop();
   };
   const setPreviousPageHandler = () => {
     setPageHandler(currentPage - 1);
+    scrollToListTop();
+  };
+
+  const scrollToListTop = () => {
+    const elementTop = containerRef.current.getBoundingClientRect().top;
+    const scrollTop = window.scrollY;
+    window.scrollTo(0, elementTop + scrollTop);
   };
 
   const isListContracted = !isListExpanded;
@@ -53,7 +63,7 @@ function PopularActorsList({ isExpandable }) {
     isListExpanded ? "h-auto" : "h-[440px] sm:h-[455px]"
   }`;
   return (
-    <section className={containerClasses}>
+    <section className={containerClasses} ref={containerRef}>
       <div className="flex  sm:items-center gap-8 mb-4">
         <ListHeader
           text="Popular Actors"

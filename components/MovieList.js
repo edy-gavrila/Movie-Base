@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import BottomFade from "./UI/BottomFade";
 
 import MovieCard from "./UI/MovieCard";
@@ -14,6 +14,7 @@ function MovieList({
   onSetSelectedMovieOrShow,
 }) {
   const [isListExpanded, setIsListExpanded] = useState(!isExpandable);
+  const containerRef = useRef();
 
   const expandListHandler = () => {
     setIsListExpanded(true);
@@ -24,9 +25,19 @@ function MovieList({
 
   const setNextPageHandler = () => {
     onSetPage(currentPage + 1);
+    scrollToListTop();
   };
+
   const setPreviousPageHandler = () => {
     onSetPage(currentPage - 1);
+    scrollToListTop();
+  };
+
+  const scrollToListTop = () => {
+    const elementTop = containerRef.current.getBoundingClientRect().top;
+    const navBarOffset = 75;
+    const scrollTop = window.scrollY;
+    window.scrollTo(0, elementTop + scrollTop - navBarOffset);
   };
 
   const content = movieList.map((movie) => {
@@ -46,7 +57,7 @@ function MovieList({
   const isListContracted = !isListExpanded;
 
   return (
-    <div className={containerClasses}>
+    <div className={containerClasses} ref={containerRef}>
       <div className="flex sm:items-center gap-8 mb-4">
         <ListHeader
           text={listTitle}

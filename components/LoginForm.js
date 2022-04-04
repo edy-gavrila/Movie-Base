@@ -15,6 +15,7 @@ const LoginForm = ({ onLoginUser }) => {
 
   const formSubmitHandler = (e) => {
     e.preventDefault();
+    
     onLoginUser(userData);
   };
 

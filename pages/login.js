@@ -1,25 +1,29 @@
-import { useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
-
-import { loginUserInFirebase, logoutUser } from "../APIs/auth";
 import { AuthContext } from "../Contexts/AuthContext";
 
 import LoginForm from "../components/LoginForm";
 import SiteLayout from "../components/SiteLayout";
 import ErrorBanner from "../components/UI/ErrorBanner";
 import LoginUserInfo from "../components/UI/LoginUserInfo";
+import { AppStateContext } from "../Contexts/AppStateContext";
 
 const defaultAuthError = { code: "", message: "", isError: false };
 
 function Login() {
   const [authError, setAuthError] = useState(defaultAuthError);
-  const { onSetUserAuthData, onUserLogout } = useContext(AuthContext);
+  const { onUserLogout, onUserLogin, isAuthenticated } =
+    useContext(AuthContext);
+  const { onSetSlectedMenuItemIndex } = useContext(AppStateContext);
   const router = useRouter();
+
+  const navigateToHomePage = useCallback(() => {
+    router.replace("/");
+  }, [router]);
 
   useEffect(() => {
     const setUserLoggedOut = async () => {
       try {
-        await logoutUser();
         onUserLogout();
       } catch (error) {
         setAuthError({
@@ -29,23 +33,23 @@ function Login() {
         });
       }
     };
-    setUserLoggedOut();
-  }, [onUserLogout]);
+    if (isAuthenticated) {
+      navigateToHomePage();
+    } else {
+      setUserLoggedOut();
+      onSetSlectedMenuItemIndex(-1);
+    }
+  }, [
+    onUserLogout,
+    onSetSlectedMenuItemIndex,
+    isAuthenticated,
+    navigateToHomePage,
+  ]);
 
   const loginUserHandler = async (userData) => {
-    let loggedInUserData;
-
     clearAuthError();
-
     try {
-      loggedInUserData = await loginUserInFirebase(userData);
-      loggedInUserData = {
-        email: loggedInUserData.email,
-        displayName: loggedInUserData.displayName,
-        uid: loggedInUserData.uid,
-        photoURL: loggedInUserData.photoURL,
-      };
-      onSetUserAuthData(loggedInUserData);
+      await onUserLogin(userData);
       navigateToHomePage();
     } catch (error) {
       setAuthError({
@@ -58,10 +62,6 @@ function Login() {
 
   const clearAuthError = () => {
     setAuthError(defaultAuthError);
-  };
-
-  const navigateToHomePage = () => {
-    router.replace("/");
   };
 
   return (

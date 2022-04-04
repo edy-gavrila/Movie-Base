@@ -4,7 +4,7 @@ import { AuthContext } from "../Contexts/AuthContext";
 
 function GuestMode() {
   const router = useRouter();
-  const { onSetGuestMode } = useContext(AuthContext);
+  const { onSetGuestMode, guestMode } = useContext(AuthContext);
   useEffect(() => {
     onSetGuestMode();
     router.replace("/");

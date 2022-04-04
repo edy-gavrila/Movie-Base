@@ -1,21 +1,18 @@
+import { useContext } from "react";
+import { AuthContext } from "../../Contexts/AuthContext";
 import MenuLink from "../UI/MenuLink";
-
-const authLinks = [
-  {
-    name: "Guest Mode",
-    path: "/guest-mode",
-  },
-  { name: "Login", path: "/login" },
-];
+import MenuButton from "./MenuButton";
 
 function AuthLinks() {
+  const { onSetGuestMode } = useContext(AuthContext);
   return (
-    <ul className="flex">
-      {authLinks.map(({ path, name }, idx) => (
-        <li key={idx}>
-          <MenuLink path={path}>{name}</MenuLink>
-        </li>
-      ))}
+    <ul className="flex items-center">
+      <li>
+        <MenuButton action={onSetGuestMode}>{"Guest Mode"}</MenuButton>
+      </li>
+      <li>
+        <MenuLink path={"/login"}>{"Login"}</MenuLink>
+      </li>
     </ul>
   );
 }

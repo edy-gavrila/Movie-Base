@@ -38,4 +38,17 @@
 
 01/03/22
     Finished movie and tv show details cards.
-    Did lots of refactoring, created separate components for 
+    Did lots of refactoring, created separate components for movie card and actor card.
+
+14/03/22
+    Started working on auth persistence.
+
+28/03/22
+    Today I started working on the guest login logic. Set up local storage, had a bit of a rough time as I had to re-learn some parts of the code. I left the code with a nasty error in it.
+
+29/03/22
+    Today I continued working with the authentication logic. I had a suspicious error that seemed to vanish after a while without me doing any obvious thing. This is a bad sign, code should not behave unpredictably. I rewrote a function in the login page so the logic is mostly contained in the authContextProvider.
+
+04/04/22
+    Made the pop up menu for the user header disappear when the user clicks elsewhere.
+    Worked on added  smooth scroll behaviour when the user changes the page of any of the lists. Now the list scrolls to the top of the page when the user goes back and forth in the list page

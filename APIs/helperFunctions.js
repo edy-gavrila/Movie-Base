@@ -1,4 +1,5 @@
 import { format } from "date-fns";
+import { logWithPosition } from "./errorManagement";
 
 const formatDate = (date) => {
   //Due to inconsistencies in the date from tmdb api, the function needs to deal with invalid dates
@@ -6,7 +7,7 @@ const formatDate = (date) => {
   try {
     formatedDate = format(new Date(date), "dd MMM yyyy");
   } catch (error) {
-    console.error(error.message);
+    logWithPosition("formatDate", "Invalid Date");
   } finally {
     return formatedDate;
   }

@@ -1,5 +1,3 @@
-import { FaRocketchat } from "react-icons/fa";
-
 const tmdbKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 const baseURL = "https://api.themoviedb.org/3";
 const discoverMoviesBaseURL = `${baseURL}/discover/movie?api_key=${tmdbKey}`;

@@ -9,7 +9,7 @@ import TvShowDetailsModal from "./TvShowDetailsModal";
 
 function SiteLayout({ children }) {
   const { isDetailsModalVisible } = useContext(AppStateContext);
-  const { selectedMovieOrShow, selectedActor } = useContext(MovieDataContext);
+  const { selectedMovieOrShow } = useContext(MovieDataContext);
   return (
     <div className=" bg-slate-300 flex flex-col font-sourceSans tracking-wider text-slate-600 min-h-screen min-w-[360px]">
       <Header />

@@ -4,8 +4,8 @@ const defaultUserContext = {
   userData: { email: "", displayName: "", photoURL: "", uid: null },
   isAuthenticated: false,
   guestMode: false,
-  onSetUserAuthData: () => {},
   onUserLogout: () => {},
+  onUserLogin: () => {},
   onSetGuestMode: () => {},
 };
 
